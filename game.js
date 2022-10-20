@@ -11,15 +11,18 @@ function ValidateLetter() {
             used=true;
         }
     }
-    KeyboardLoader(used);
+    KeyboardUpdate(used,event.target);
 }
 
-function KeyboardLoader(key) {
+function KeyboardUpdate(key,button) {
     if (key===true) {
         console.log("it was used");
+        button.style.backgroundColor='rgb(255, 118, 118)';
+        console.log(button);
     }
     else{
         console.log("it was not used");
+        button.style.backgroundColor='rgb(146, 124, 124)';
     }
 }
 
