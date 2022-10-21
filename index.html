@@ -8,40 +8,39 @@
     <title>Hangman</title>
   </head>
   <body>
-    <!-- <section class="user-input" id="user-input">
-      <form action="#">
-        <label for="input-word"></label>
-        <input type="text" id="input-word" />
-      </form>
-    </section> -->
-    <section class="alphabet-container" id="alphabet-container">
-      <button class="letter" onclick="ValidateLetter()">A</button>
-      <button class="letter" onclick="ValidateLetter()">B</button>
-      <button class="letter" onclick="ValidateLetter()">C</button>
-      <button class="letter" onclick="ValidateLetter()">D</button>
-      <button class="letter" onclick="ValidateLetter()">E</button>
-      <button class="letter" onclick="ValidateLetter()">F</button>
-      <button class="letter" onclick="ValidateLetter()">G</button>
-      <button class="letter" onclick="ValidateLetter()">H</button>
-      <button class="letter" onclick="ValidateLetter()">I</button>
-      <button class="letter" onclick="ValidateLetter()">J</button>
-      <button class="letter" onclick="ValidateLetter()">K</button>
-      <button class="letter" onclick="ValidateLetter()">L</button>
-      <button class="letter" onclick="ValidateLetter()">M</button>
-      <button class="letter" onclick="ValidateLetter()">N</button>
-      <button class="letter" onclick="ValidateLetter()">O</button>
-      <button class="letter" onclick="ValidateLetter()">P</button>
-      <button class="letter" onclick="ValidateLetter()">Q</button>
-      <button class="letter" onclick="ValidateLetter()">R</button>
-      <button class="letter" onclick="ValidateLetter()">S</button>
-      <button class="letter" onclick="ValidateLetter()">T</button>
-      <button class="letter" onclick="ValidateLetter()">U</button>
-      <button class="letter" onclick="ValidateLetter()">W</button>
-      <button class="letter" onclick="ValidateLetter()">X</button>
-      <button class="letter" onclick="ValidateLetter()">Y</button>
-      <button class="letter" onclick="ValidateLetter()">Z</button>
-    </section>
-    <section class="game-container" id="game-container"></section>
+    <main class="main-wrapper">
+      <header class="game-header">
+        <h1>HANG MAN</h1>
+      </header>
+      <section class="alphabet-container flex" id="alphabet-container">
+        <button class="letter" onclick="ValidateLetter()">A</button>
+        <button class="letter" onclick="ValidateLetter()">B</button>
+        <button class="letter" onclick="ValidateLetter()">C</button>
+        <button class="letter" onclick="ValidateLetter()">D</button>
+        <button class="letter" onclick="ValidateLetter()">E</button>
+        <button class="letter" onclick="ValidateLetter()">F</button>
+        <button class="letter" onclick="ValidateLetter()">G</button>
+        <button class="letter" onclick="ValidateLetter()">H</button>
+        <button class="letter" onclick="ValidateLetter()">I</button>
+        <button class="letter" onclick="ValidateLetter()">J</button>
+        <button class="letter" onclick="ValidateLetter()">K</button>
+        <button class="letter" onclick="ValidateLetter()">L</button>
+        <button class="letter" onclick="ValidateLetter()">M</button>
+        <button class="letter" onclick="ValidateLetter()">N</button>
+        <button class="letter" onclick="ValidateLetter()">O</button>
+        <button class="letter" onclick="ValidateLetter()">P</button>
+        <button class="letter" onclick="ValidateLetter()">Q</button>
+        <button class="letter" onclick="ValidateLetter()">R</button>
+        <button class="letter" onclick="ValidateLetter()">S</button>
+        <button class="letter" onclick="ValidateLetter()">T</button>
+        <button class="letter" onclick="ValidateLetter()">U</button>
+        <button class="letter" onclick="ValidateLetter()">W</button>
+        <button class="letter" onclick="ValidateLetter()">X</button>
+        <button class="letter" onclick="ValidateLetter()">Y</button>
+        <button class="letter" onclick="ValidateLetter()">Z</button>
+      </section>
+      <section class="game-container flex" id="game-container"></section>
+    </main>
     <script src="game.js"></script>
   </body>
 </html>

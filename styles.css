@@ -1,7 +1,55 @@
-body {
-  color: rgb(146, 124, 124);
+@import url("https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,200&family=Codystar&display=swap");
+/* font-family: 'Anybody', cursive;
+font-family: 'Codystar', cursive; */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+img {
+  max-width: 100%;
+  display: block;
+}
+:root {
+  --colorOnyx: #313638;
+}
+body {
+  font-family: "Anybody", cursive;
+}
+.main-wrapper {
+  background-color: rgb(51, 94, 111);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.game-header {
+  font-family: "Codystar", cursive;
+  color: aliceblue;
+}
+.game-header h1 {
+  font-size: 2rem;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+}
+.alphabet-container {
+  background-color: #799ca939;
+  padding: 1rem;
+}
+.letter {
+  padding: 0.2rem;
+}
+
 .spot {
   background-color: rgb(218, 215, 180);
+  padding: 1rem;
+  font-weight: bold;
+
   /* border: 0.1rem solid black; */
 }
