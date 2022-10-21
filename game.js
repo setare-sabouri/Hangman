@@ -6,7 +6,6 @@ let letters=word.split("");
 let lives=0;
 
 //who comes firrst below?
-
 function SetScene(letters) {
     for (let i = 0; i < letters.length; i++) {
         let spot=document.createElement('span');
@@ -33,19 +32,29 @@ function ValidateLetter() {
         }
     }
     KeyboardUpdate(used,event.target);
+    checkState();
 }
 
 function KeyboardUpdate(key,button) {
     button.disabled=true;
     button.style.color='white';
     if (key===true) {
+        console.log("it was used");
         button.style.backgroundColor='rgb(255, 118, 118)';
-        updateScene(button);
     }
     else{
         console.log("it was not used");
         button.style.backgroundColor='rgb(146, 124, 124)';
         lives++;
-        console.log(lives);
     }
+}
+function checkState() {
+    if (lives>5) {
+        alert("GAME OVER");
+        for (let i = 0; i < alphabet.length; i++) {
+            alphabet[i].disabled=true;
+            
+        }
+    }
+    
 }
