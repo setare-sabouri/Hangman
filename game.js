@@ -8,21 +8,29 @@ let lives=0;
 SetScene(letters);
 function SetScene(letters) {
     for (let i = 0; i < letters.length; i++) {
-        Scene.innerHTML+=" _ ";
+        let spot=document.createElement('span').innerHTML=" _ ";
+        Scene.append(spot);
     }
 }
-function SetLetter(letter,index) {
-    
+function UpdateScene(letter,index) {
+    for (let i = 0; i < letters.length; i++) {
+        if (i===index) {
+            Scene.innerHTML+=letter;
+            console.log(Scene);
+        }
+        else {
+            Scene.innerHTML+="_";
+        }
+    }
 }
 function ValidateLetter() {
     const ClickedLetter=event.target.innerHTML;
     let used=false;
     for (let i = 0; i < letters.length; i++) {
         if (ClickedLetter===letters[i]) {
-            console.log(letters[i]+' ok');
+            console.log(letters[i]+' is used');
             used=true;
-            let index=i;
-            SetLetter(ClickedLetter,i);
+            UpdateScene(letters[i],i);
         }
     }
     KeyboardUpdate(used,event.target,);
