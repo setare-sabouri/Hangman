@@ -43,13 +43,18 @@ body {
   padding: 1rem;
 }
 .letter {
-  padding: 0.2rem;
+  padding: 1rem;
 }
-
+.letter:hover {
+  background-color: rgb(234, 183, 166);
+}
 .spot {
   background-color: rgb(218, 215, 180);
   padding: 1rem;
   font-weight: bold;
 
   /* border: 0.1rem solid black; */
+}
+.display-life {
+  color: aliceblue;
 }

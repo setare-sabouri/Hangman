@@ -1,9 +1,10 @@
 let alphabet=document.querySelectorAll(".letter");
 const Scene=document.getElementById('game-container');
+let livesDisplay=document.getElementById('display-life');
 let word=prompt('Enter the word to guess: ').toUpperCase();
 console.log(word);
 let letters=word.split("");
-let lives=0;
+let lives=5;
 
 //who comes firrst below?
 function SetScene(letters) {
@@ -13,6 +14,7 @@ function SetScene(letters) {
         spot.innerHTML=" _ ";
         Scene.append(spot);
     }
+    livesDisplay.innerHTML="you have 5 chances";
 }
 SetScene(letters);
 
@@ -45,16 +47,17 @@ function KeyboardUpdate(key,button) {
     else{
         console.log("it was not used");
         button.style.backgroundColor='rgb(146, 124, 124)';
-        lives++;
+        lives--;
     }
 }
 function checkState() {
-    if (lives>5) {
+    
+    if (lives<=0) {
         alert("GAME OVER");
         for (let i = 0; i < alphabet.length; i++) {
             alphabet[i].disabled=true;
-            
         }
     }
+    livesDisplay.innerHTML=lives;
     
 }
