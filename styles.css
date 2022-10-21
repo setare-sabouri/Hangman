@@ -1,3 +1,7 @@
-body{
-    color: rgb(146, 124, 124);
+body {
+  color: rgb(146, 124, 124);
+}
+.spot {
+  background-color: rgb(218, 215, 180);
+  /* border: 0.1rem solid black; */
 }
