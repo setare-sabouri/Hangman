@@ -8,6 +8,7 @@ let lives=0;
 // let word=prompt('Player 1 --> Enter the word to guess: ').toUpperCase();
 function play(params) {
     let word=wordInput.value;
+    wordInput.value='';
     if (word) {
         letters=word.toUpperCase().split("");
         lives=5;
@@ -32,10 +33,10 @@ function SetScene(letters) {
  function WiningCkeck(spots) {
     let check=[];
     for (let i = 0; i < spots.length; i++) {
-        check[i]=spots[i].innerHTML
+        check[i]=spots[i].innerHTML;
     }
     if (!check.includes(" _ ")) {
-        console.log("YES IT IS "+letters.join('')+" YOU WON!");
+        alert("YES IT IS "+letters.join('')+" YOU WON!");
         disableKeys();
     }
  }
@@ -44,29 +45,26 @@ function UpdateScene(letter,index) {
     let CurrentSpots=document.querySelectorAll('.spot');
     CurrentSpots[index].innerHTML=letter;
     WiningCkeck(CurrentSpots);
-    // if (CurrentSpots.include(" _ ")) {
-    //     alert("YOU WIN");
-    //     alphabet[i].disabled=true;
-    // }
+
 }
 
 function ValidateLetter() {
-    const ClickedLetter=event.target.innerHTML;
+    const ClickedLetter=event.target;
     let used=false;
     for (let i = 0; i < letters.length; i++) {
-        if (ClickedLetter===letters[i]) {
+        if (ClickedLetter.innerHTML===letters[i]) {
             used=true;
             UpdateScene(letters[i],i);
         }
     }
-    KeyboardUpdate(used,event.target);
-    checkState();
+    KeyboardUpdate(used,ClickedLetter);
+    losingCheck();
 }
 
-function KeyboardUpdate(key,button) {
+function KeyboardUpdate(state,button) {
     button.disabled=true;
     button.style.color='white';
-    if (key===true) {
+    if (state===true) {
         console.log("it was used");
         button.style.backgroundColor='rgb(255, 118, 118)';
     }
@@ -76,7 +74,7 @@ function KeyboardUpdate(key,button) {
         lives--;
     }
 }
-function checkState() {
+function losingCheck() {
     
     if (lives<=0) {
         alert("GAME OVER");
@@ -85,6 +83,7 @@ function checkState() {
     livesDisplay.innerHTML=lives;
     
 }
+
 function disableKeys() {
     for (let i = 0; i < alphabet.length; i++) {
         alphabet[i].disabled=true;

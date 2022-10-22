@@ -33,10 +33,10 @@ body {
   font-size: 2rem;
 }
 input {
-  padding: 2rem;
+  padding: 1rem;
 }
 .play-btn {
-  padding: 2rem;
+  padding: 1rem;
 }
 .flex {
   display: flex;
