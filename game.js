@@ -3,13 +3,14 @@ let wordInput=document.getElementById("word-input");
 let alphabet=document.querySelectorAll('.letter');
 const Scene=document.getElementById('game-container');
 let livesDisplay=document.getElementById('display-life');
-
+let letters=[];
+let lives=0;
 // let word=prompt('Player 1 --> Enter the word to guess: ').toUpperCase();
 function play(params) {
     let word=wordInput.value;
     if (word) {
-        let letters=word.toUpperCase().split("");
-        let lives=5;
+        letters=word.toUpperCase().split("");
+        lives=5;
         // form.reset();
         SetScene(letters);  
     }
@@ -28,13 +29,22 @@ function SetScene(letters) {
     }
     livesDisplay.innerHTML="you have 5 chances";
 }
-
+ function WiningCkeck(spots) {
+    let check=[];
+    for (let i = 0; i < spots.length; i++) {
+        check[i]=spots[i].innerHTML
+    }
+    if (!check.includes(" _ ")) {
+        console.log("YES IT IS "+letters.join('')+" YOU WON!");
+        disableKeys();
+    }
+ }
 
 function UpdateScene(letter,index) {
-    let CurrentScene=document.querySelectorAll('.spot');
-    CurrentScene[index].innerHTML=letter;
-    //  here you neew to check if currentstate includes "_ " or not 
-    // if (CurrentScene.includes(" _ ")) {
+    let CurrentSpots=document.querySelectorAll('.spot');
+    CurrentSpots[index].innerHTML=letter;
+    WiningCkeck(CurrentSpots);
+    // if (CurrentSpots.include(" _ ")) {
     //     alert("YOU WIN");
     //     alphabet[i].disabled=true;
     // }
@@ -70,11 +80,14 @@ function checkState() {
     
     if (lives<=0) {
         alert("GAME OVER");
-        for (let i = 0; i < alphabet.length; i++) {
-            alphabet[i].disabled=true;
-        }
+        disableKeys();
     }
     livesDisplay.innerHTML=lives;
     
+}
+function disableKeys() {
+    for (let i = 0; i < alphabet.length; i++) {
+        alphabet[i].disabled=true;
+    }
 }
 //use confirm too go for a new game

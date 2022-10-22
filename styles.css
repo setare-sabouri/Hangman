@@ -32,6 +32,12 @@ body {
 .game-header h1 {
   font-size: 2rem;
 }
+input {
+  padding: 2rem;
+}
+.play-btn {
+  padding: 2rem;
+}
 .flex {
   display: flex;
   flex-wrap: wrap;
