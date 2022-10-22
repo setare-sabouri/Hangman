@@ -1,3 +1,4 @@
+let form=document.getElementById("input-form");
 let wordInput=document.getElementById("word-input");
 let alphabet=document.querySelectorAll('.letter');
 const Scene=document.getElementById('game-container');
@@ -9,6 +10,7 @@ function play(params) {
     if (word) {
         let letters=word.toUpperCase().split("");
         let lives=5;
+        // form.reset();
         SetScene(letters);  
     }
     else{
@@ -16,11 +18,13 @@ function play(params) {
     }
 }
 function SetScene(letters) {
+    Scene.innerHTML="";
     for (let i = 0; i < letters.length; i++) {
-        let spot=document.createElement('span').classList.add('spot');
+        let spot=document.createElement('span')
+        spot.classList.add('spot');
         spot.innerHTML=" _ ";
         Scene.append(spot);
-        //lifes can be aaded here in update
+        //lifes can be aaded here in update visual
     }
     livesDisplay.innerHTML="you have 5 chances";
 }
