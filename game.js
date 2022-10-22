@@ -1,27 +1,39 @@
-let alphabet=document.querySelectorAll(".letter");
+let wordInput=document.getElementById("word-input");
+let alphabet=document.querySelectorAll('.letter');
 const Scene=document.getElementById('game-container');
 let livesDisplay=document.getElementById('display-life');
-let word=prompt('Enter the word to guess: ').toUpperCase();
-console.log(word);
-let letters=word.split("");
-let lives=5;
 
-//who comes firrst below?
+// let word=prompt('Player 1 --> Enter the word to guess: ').toUpperCase();
+function play(params) {
+    let word=wordInput.value;
+    if (word) {
+        let letters=word.toUpperCase().split("");
+        let lives=5;
+        SetScene(letters);  
+    }
+    else{
+        alert("Player 1 enter the word to guess");
+    }
+}
 function SetScene(letters) {
     for (let i = 0; i < letters.length; i++) {
-        let spot=document.createElement('span');
-        spot.classList.add('spot');
+        let spot=document.createElement('span').classList.add('spot');
         spot.innerHTML=" _ ";
         Scene.append(spot);
+        //lifes can be aaded here in update
     }
     livesDisplay.innerHTML="you have 5 chances";
 }
-SetScene(letters);
+
 
 function UpdateScene(letter,index) {
     let CurrentScene=document.querySelectorAll('.spot');
-    console.dir(CurrentScene[0].innerHTML+"   ddddd");
     CurrentScene[index].innerHTML=letter;
+    //  here you neew to check if currentstate includes "_ " or not 
+    // if (CurrentScene.includes(" _ ")) {
+    //     alert("YOU WIN");
+    //     alphabet[i].disabled=true;
+    // }
 }
 
 function ValidateLetter() {
@@ -61,3 +73,4 @@ function checkState() {
     livesDisplay.innerHTML=lives;
     
 }
+//use confirm too go for a new game
