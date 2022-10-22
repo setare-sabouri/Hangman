@@ -5,8 +5,8 @@ const Scene=document.getElementById('game-container');
 let livesDisplay=document.getElementById('display-life');
 let letters=[];
 let lives=0;
-// let word=prompt('Player 1 --> Enter the word to guess: ').toUpperCase();
 function play(params) {
+    // enableleKeys();
     let word=wordInput.value;
     wordInput.value='';
     if (word) {
@@ -87,6 +87,11 @@ function losingCheck() {
 function disableKeys() {
     for (let i = 0; i < alphabet.length; i++) {
         alphabet[i].disabled=true;
+    }
+}
+function enableleKeys() {
+    for (let i = 0; i < alphabet.length; i++) {
+        alphabet[i].disabled=false;
     }
 }
 //use confirm too go for a new game

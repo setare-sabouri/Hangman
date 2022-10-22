@@ -11,13 +11,19 @@ img {
   display: block;
 }
 :root {
-  --colorOnyx: #313638;
+  --teaGreen: #c9f2c7;
+  --GrannySmithApple: #aceca1;
+  --darkSeaGreen: #96be8c;
+  --RussianGreen: #629460;
+  --KombuGreen: #243119;
+  --innerPadding: 1rem;
+  --radius: 0.5rem;
 }
 body {
   font-family: "Anybody", cursive;
 }
 .main-wrapper {
-  background-color: rgb(51, 94, 111);
+  background-color: var(--RussianGreen);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -27,16 +33,17 @@ body {
 }
 .game-header {
   font-family: "Codystar", cursive;
-  color: aliceblue;
+  color: var(--teaGreen);
+  text-shadow: 0.3rem 0.3rem var(--KombuGreen);
 }
 .game-header h1 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
+
+.play-btn,
 input {
-  padding: 1rem;
-}
-.play-btn {
-  padding: 1rem;
+  padding: var(--innerPadding);
+  border-radius: var(--radius);
 }
 .flex {
   display: flex;
@@ -45,10 +52,13 @@ input {
   justify-content: center;
 }
 .alphabet-container {
-  background-color: #799ca939;
+  width: 90%;
+  background-color: var(--darkSeaGreen);
   padding: 1rem;
+  border-radius: var(--radius);
 }
 .letter {
+  border-radius: var(--radius);
   padding: 1rem;
 }
 .letter:hover {
@@ -63,4 +73,10 @@ input {
 }
 .display-life {
   color: aliceblue;
+}
+
+@media screen and (min-width: 480px) {
+  .game-header h1 {
+    font-size: 5rem;
+  }
 }
