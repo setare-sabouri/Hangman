@@ -65,16 +65,21 @@ input {
   background-color: rgb(234, 183, 166);
 }
 .spot {
-  background-color: rgb(218, 215, 180);
+  background-color: var(--teaGreen);
   padding: 1rem;
   font-weight: bold;
-
+  border-radius: var(--radius);
   /* border: 0.1rem solid black; */
 }
 .display-life {
-  color: aliceblue;
+  color: var(--KombuGreen);
+  font-size: 1.5rem;
+  text-shadow: 0.1rem 0.1rem var(--darkSeaGreen);
+  font-weight: bold;
 }
-
+.again-btn {
+  display: none;
+}
 @media screen and (min-width: 480px) {
   .game-header h1 {
     font-size: 5rem;
