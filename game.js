@@ -1,5 +1,5 @@
-let form=document.getElementById("input-form");
-let wordInput=document.getElementById("word-input");
+
+let wordInput=document.querySelector("#word-input");
 let alphabet=document.querySelectorAll('.letter');
 const Scene=document.getElementById('game-container');
 let livesDisplay=document.getElementById('display-life');
@@ -8,6 +8,7 @@ let letters=[];
 let lives=0;
 function play(params) {
     // enableleKeys();
+    console.log(wordInput.getBoundingClientRect());
     let word=wordInput.value;
     wordInput.value='';
     if (word) {
@@ -39,7 +40,7 @@ function SetScene(letters) {
     if (!check.includes(" _ ")) {
         alert("YES IT IS "+letters.join('')+" YOU WON!");
         disableKeys();
-        // playAgain();
+        playAgain();
     }
  }
 
@@ -49,8 +50,6 @@ function UpdateScene(letter,index) {
     setTimeout(() => {
         WiningCkeck(CurrentSpots);
     }, 1000);
-    
-
 }
 
 function ValidateLetter() {
@@ -84,7 +83,7 @@ function losingCheck() {
     if (lives<=0) {
         alert("GAME OVER");
         disableKeys();
-        // playAgain();
+        playAgain();
     }
     livesDisplay.innerHTML=lives;
     
@@ -98,14 +97,15 @@ function disableKeys() {
 function enableleKeys() {
     for (let i = 0; i < alphabet.length; i++) {
         alphabet[i].disabled=false;
+        alphabet[i].style.backgroundColor='';
+        alphabet[i].style.color='';
     }
 }
-// function playAgain() {
+function playAgain() {
     
-//     let toPlay=confirm("DO YOU WANT TO PLAY AGAIN ?");
-//     if (toPlay) {
-//         enableleKeys();
-//         Scene.innerHTML="";
-//     }
-// }
-//use confirm too go for a new game
+    let toPlay=confirm("DO YOU WANT TO PLAY AGAIN ?");
+    if (toPlay) {
+        enableleKeys();
+        Scene.innerHTML="";
+    }
+}
