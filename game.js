@@ -57,8 +57,8 @@ alphabet.forEach(element => {
 
 function playTurn(clickedLetter) {
     if (validate(clickedLetter)) {
-        console.log(clickedLetter+" letter exists");
-        // win(CurrentSpots);
+        console.log(clickedLetter+" letter is used");
+        win(CurrentSpots);
     }
     else{
         console.log(clickedLetter+"  it does not exist");
@@ -105,17 +105,17 @@ function SetScene(letters) {
 
 // }
 
- function WiningCkeck(spots) {
+ function win(spots) {
     let check=[];
     for (let i = 0; i < spots.length; i++) {
         check[i]=spots[i].innerHTML;
     }
     if (!check.includes(" _ ")) {
         alert("YES IT IS "+letters.join('')+" YOU WON!");
-        disableKeys();
-        win=true;
-        playAgain();
-        return win;
+        // disableKeys();
+        // win=true;
+        // playAgain();
+        // return win;
     }
  }
 
