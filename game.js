@@ -8,8 +8,6 @@ const againContainer=document.getElementById('again-btn');
 let CurrentSpots=[];
 let letters=[];
 let lives=0;
-let word='';
-let win=false;
 let clickedLetter='empty';
 
 // function playTurn() {
@@ -96,6 +94,23 @@ function SetScene(letters) {
     // displayLive(lives);
 }
 
+function win(spots) {
+    let check=[];
+    for (let i = 0; i < spots.length; i++) {
+        check[i]=spots[i].innerHTML;
+    }
+    if (!check.includes(" _ ")) {
+        alert("YES IT IS "+letters.join('')+" YOU WON!");
+        disableKeys();
+    }
+ }
+
+function UpdateScene(letter,index) {
+    CurrentSpots=document.querySelectorAll('.spot');
+    CurrentSpots[index].innerHTML=letter;
+}
+
+
 // function displayLive(lives) {
 //     for (let i = 0; i < lives; i--) {
 //         let img=document.createElement("img");
@@ -104,25 +119,6 @@ function SetScene(letters) {
 //     }
 
 // }
-
- function win(spots) {
-    let check=[];
-    for (let i = 0; i < spots.length; i++) {
-        check[i]=spots[i].innerHTML;
-    }
-    if (!check.includes(" _ ")) {
-        alert("YES IT IS "+letters.join('')+" YOU WON!");
-        // disableKeys();
-        // win=true;
-        // playAgain();
-        // return win;
-    }
- }
-
-function UpdateScene(letter,index) {
-    CurrentSpots=document.querySelectorAll('.spot');
-    CurrentSpots[index].innerHTML=letter;
-}
 
 
 // function KeyboardUpdate(state,button) {
@@ -146,11 +142,11 @@ function UpdateScene(letter,index) {
 //     }
 //     displayLive(lives);
 // }
-// function disableKeys() {
-//     for (let i = 0; i < alphabet.length; i++) {
-//         alphabet[i].disabled=true;
-//     }
-// }
+function disableKeys() {
+    for (let i = 0; i < alphabet.length; i++) {
+        alphabet[i].disabled=true;
+    }
+}
 // function enableleKeys() {
 //     for (let i = 0; i < alphabet.length; i++) {
 //         alphabet[i].disabled=false;
