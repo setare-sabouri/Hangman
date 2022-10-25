@@ -42,7 +42,7 @@ form.onsubmit=function(event) {
     if (guessingWord) {
         letters=guessingWord.toUpperCase().split("");
         form.elements.wordToGuess.value='';
-        //     SetScene(letters); 
+        SetScene(letters); 
     }
 }
 alphabet.forEach(element => {
@@ -59,9 +59,9 @@ function playTurn(clickedLetter) {
     }
     else{
         console.log(clickedLetter+"  it does not exist");
-            //     lives=5;
     }
 }
+
 function validate(clickedLetter) {
     for (let i = 0; i < letters.length; i++) {
         if (clickedLetter===letters[i]) {
@@ -76,18 +76,19 @@ function validate(clickedLetter) {
     // KeyboardUpdate(used,ClickedLetter);
     // losingCheck();
 }
-// function SetScene(letters) {
-//     Scene.innerHTML="";
-//     for (let i = 0; i < letters.length; i++) {
-//         let spot=document.createElement('span')
-//         spot.classList.add('spot');
-//         spot.innerHTML=" _ ";
-//         Scene.append(spot);
-//         //lifes can be aaded here in update visual
-//     }
-//     // livesDisplay.innerHTML="you have 5 chances";
-//     displayLive(lives);
-// }
+
+function SetScene(letters) {
+    Scene.innerHTML="";
+    for (let i = 0; i < letters.length; i++) {
+        let spot=document.createElement('span')
+        spot.classList.add('spot');
+        spot.innerHTML=" _ ";
+        Scene.append(spot);
+        //lifes can be aaded here in update visual
+    }
+    // livesDisplay.innerHTML="you have 5 chances";
+    // displayLive(lives);
+}
 
 
 
