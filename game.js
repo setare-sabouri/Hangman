@@ -5,11 +5,13 @@ const alphabet=document.querySelectorAll('.letter');
 const Scene=document.getElementById('game-container');
 const livesDisplay=document.getElementById('display-life');
 const againContainer=document.getElementById('again-btn');
+let CurrentSpots=[];
 let letters=[];
 let lives=0;
 let word='';
 let win=false;
 let clickedLetter='empty';
+
 // function playTurn() {
 //     const letter = event.target.innerHTML;
 
@@ -56,27 +58,30 @@ alphabet.forEach(element => {
 function playTurn(clickedLetter) {
     if (validate(clickedLetter)) {
         console.log(clickedLetter+" letter exists");
+        // win(CurrentSpots);
     }
     else{
         console.log(clickedLetter+"  it does not exist");
+        // losingCheck();
     }
 }
 
 function validate(clickedLetter) {
+    let used=false
     for (let i = 0; i < letters.length; i++) {
         if (clickedLetter===letters[i]) {
+            UpdateScene(letters[i],i);
+            used=true;//bot used yet
             return true;
-            // let CurrentSpots=UpdateScene(letters[i],i);
-            // setTimeout(() => {
-            //     win=WiningCkeck(CurrentSpots);
-            // }, 1000);
         }
 
     }
-    // KeyboardUpdate(used,ClickedLetter);
-    // losingCheck();
+    // KeyboardUpdate(used,clickedLetter);
+    
 }
-
+// function win(CurrentSpots) {
+        
+// }
 function SetScene(letters) {
     Scene.innerHTML="";
     for (let i = 0; i < letters.length; i++) {
@@ -87,32 +92,37 @@ function SetScene(letters) {
         //lifes can be aaded here in update visual
     }
     // livesDisplay.innerHTML="you have 5 chances";
+    lives=5;
     // displayLive(lives);
 }
 
-
-
-//  function WiningCkeck(spots) {
-//     let check=[];
-//     for (let i = 0; i < spots.length; i++) {
-//         check[i]=spots[i].innerHTML;
+// function displayLive(lives) {
+//     for (let i = 0; i < lives; i--) {
+//         let img=document.createElement("img");
+//         img.src="heart.png";
+//         livesDisplay.append(img);
 //     }
-//     if (!check.includes(" _ ")) {
-//         alert("YES IT IS "+letters.join('')+" YOU WON!");
-//         disableKeys();
-//         win=true;
-//         playAgain();
-//         return win;
-//     }
-//  }
 
-// function UpdateScene(letter,index) {
-//     let CurrentSpots=document.querySelectorAll('.spot');
-//     CurrentSpots[index].innerHTML=letter;
-//     return CurrentSpots;
 // }
 
+ function WiningCkeck(spots) {
+    let check=[];
+    for (let i = 0; i < spots.length; i++) {
+        check[i]=spots[i].innerHTML;
+    }
+    if (!check.includes(" _ ")) {
+        alert("YES IT IS "+letters.join('')+" YOU WON!");
+        disableKeys();
+        win=true;
+        playAgain();
+        return win;
+    }
+ }
 
+function UpdateScene(letter,index) {
+    CurrentSpots=document.querySelectorAll('.spot');
+    CurrentSpots[index].innerHTML=letter;
+}
 
 
 // function KeyboardUpdate(state,button) {
@@ -154,12 +164,4 @@ function SetScene(letters) {
 //         Scene.innerHTML="";
 //         enableleKeys();
 //     }
-// }
-// function displayLive(lives) {
-//     for (let i = 0; i < lives; i--) {
-//         let img=document.createElement("img");
-//         img.src="heart.png";
-//         livesDisplay.append(img);
-//     }
-
 // }
