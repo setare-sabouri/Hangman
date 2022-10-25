@@ -54,9 +54,12 @@ function validate(clickedLetter) {
     }
    return used;
 }
-// function win(CurrentSpots) {
-        
-// }
+
+function UpdateScene(letter,index) {
+    CurrentSpots=document.querySelectorAll('.spot');
+    CurrentSpots[index].innerHTML=letter;
+}
+
 function SetScene(letters) {
     Scene.innerHTML="";
     for (let i = 0; i < letters.length; i++) {
@@ -66,17 +69,11 @@ function SetScene(letters) {
         Scene.append(spot);
         //lifes can be aaded here in update visual
     }
-    // livesDisplay.innerHTML="you have 5 chances";
+    livesDisplay.innerHTML="you have 5 chances";
     lives=5;
     // displayLive(lives);
 }
-function lose() {
-    lives--;
-    if (lives<=0) {
-        alert("GAME OVER ! it was "+ guessingWord);
-        disableKeys();
-    }
-}
+
 function win(spots) {
     let check=[];
     for (let i = 0; i < spots.length; i++) {
@@ -88,9 +85,23 @@ function win(spots) {
     }
  }
 
-function UpdateScene(letter,index) {
-    CurrentSpots=document.querySelectorAll('.spot');
-    CurrentSpots[index].innerHTML=letter;
+ function lose() {
+    lives--;
+    if (lives<=0) {
+        alert("GAME OVER ! it was "+ guessingWord);
+        disableKeys();
+    }
+}
+function updateKeyboard(button,state) {
+    button.disabled=true;
+    button.style.color='white';
+    //add extra css later
+    if (state===true) {
+        button.style.backgroundColor='rgb(255, 118, 118)';
+    }
+    else{
+        button.style.backgroundColor='rgb(146, 124, 124)';
+    }
 }
 
 function disableKeys() {
@@ -107,22 +118,6 @@ function disableKeys() {
 //     }
 
 // }
-
-
-function updateKeyboard(button,state) {
-    button.disabled=true;
-    button.style.color='white';
-    //add extra css later
-    if (state===true) {
-        button.style.backgroundColor='rgb(255, 118, 118)';
-    }
-    else{
-        button.style.backgroundColor='rgb(146, 124, 124)';
-    }
-}
-
-
-
 
 // function enableleKeys() {
 //     for (let i = 0; i < alphabet.length; i++) {
