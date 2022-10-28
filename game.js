@@ -9,7 +9,7 @@ let letters=[];
 let lives=0;
 let guessingWord='';
 let clickedLetter='empty';
-
+//initialize func to reset , play again
 form.onsubmit=function(event) {
     event.preventDefault();
     guessingWord=form.elements.wordToGuess.value;
@@ -42,6 +42,7 @@ function playTurn(btn) {
         updateKeyboard(btn,false);
         lose();
     }
+    //display lives (check if needed)
 }
 
 function validate(clickedLetter) {
@@ -67,7 +68,7 @@ function SetScene(letters) {
         spot.classList.add('spot');
         spot.innerHTML=" _ ";
         Scene.append(spot);
-        //lifes can be aaded here in update visual
+        //lifes can be aaded here in update visually myb 
     }
     livesDisplay.innerHTML="you have 5 chances";
     lives=5;
@@ -87,6 +88,7 @@ function win(spots) {
 
  function lose() {
     lives--;
+    // displaylive(lives);
     if (lives<=0) {
         alert("GAME OVER ! it was "+ guessingWord);
         disableKeys();
@@ -95,7 +97,7 @@ function win(spots) {
 function updateKeyboard(button,state) {
     button.disabled=true;
     button.style.color='white';
-    //add extra css later
+    //add extra css later here
     if (state===true) {
         button.style.backgroundColor='rgb(255, 118, 118)';
     }
@@ -110,14 +112,15 @@ function disableKeys() {
     }
 }
 
-// function displayLive(lives) {
-//     for (let i = 0; i < lives; i--) {
-//         let img=document.createElement("img");
-//         img.src="heart.png";
-//         livesDisplay.append(img);
-//     }
+function displaylive(lives) {
+    //to check 
+    for (let i = 0; i < lives; i--) {
+        let img=document.createElement("img");
+        img.src="heart.png";
+        livesDisplay.append(img);
+    }
 
-// }
+}
 
 // function enableleKeys() {
 //     for (let i = 0; i < alphabet.length; i++) {
