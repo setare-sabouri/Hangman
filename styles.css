@@ -75,9 +75,9 @@ input {
   display: flex;
   gap: 0.3rem;
 }
-.again-btn {
+/* .again-btn {
   display: none;
-}
+} */
 @media screen and (min-width: 480px) {
   .game-header h1 {
     font-size: 5rem;

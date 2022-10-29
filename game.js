@@ -3,11 +3,11 @@ const form = document.querySelector('#input-form');
 const alphabet = document.querySelectorAll('.letter');
 const Scene = document.querySelector('.game-container');
 const livesDisplay = document.querySelector('.display-life');
-const againBtnn = document.getElementById('again-btn');
 let CurrentSpots = [];
 let letters = [];
 let lives = 0;
 let guessingWord = '';
+disableKeys();
 // initialize func to reset & play again
 form.onsubmit = function (event) {
     event.preventDefault(); // is this needed ?
@@ -18,10 +18,11 @@ form.onsubmit = function (event) {
     if (guessingWord) {
         form.elements['wordToGuess'].value = '';
         SetScene(guessingWord);
+        form.style.display = "none";
     }
 }
-
 function SetScene(guessingWord) {
+    enableleKeys();
     letters = guessingWord.toUpperCase().split("");
     Scene.innerHTML = "";
     for (let i = 0; i < letters.length; i++) {
@@ -63,12 +64,11 @@ function playTurn(btn) {
         updateKeyboard(btn, false);
         lose();
     }
-    // display lives (check if needed)
 }
 
 function validate(clickedLetter) {
     let used = false;
-    for (let i = 0; i < letters.length; i++) {
+    for (let i = 0; i < letters.length; i++) { //use word.include as update
         if (clickedLetter === letters[i]) {
             UpdateScene(letters[i], i);
             used = true;
@@ -99,19 +99,20 @@ function win() {
     if (!check.includes("___")) { //myb deleting the check[] is solution ?
         alert("YES IT IS " + letters.join('') + " YOU WON!");
         disableKeys();
-        //play again()
+        playAgain();
     }
 }
 
 function lose() {
     lives--;
     displaylives(lives);
+    //set time out or ?? to show the last live
     if (lives <= 0) {
         alert("GAME OVER ! it was " + guessingWord);
         disableKeys();
+        playAgain();
     }
 }
-
 
 function disableKeys() {
     for (let i = 0; i < alphabet.length; i++) {
@@ -120,20 +121,25 @@ function disableKeys() {
 }
 
 
-// function enableleKeys() {
-//     for (let i = 0; i < alphabet.length; i++) {
-//         alphabet[i].disabled=false;
-//         alphabet[i].style.backgroundColor='';
-//         alphabet[i].style.color='';
-//     }
-// }
-// function playAgain() {
-//     let toPlay=confirm("DO YOU WANT TO PLAY AGAIN ?");
-//     if (toPlay) {
-//         Scene.innerHTML="";
-//         enableleKeys();
-//     }
-// }
+function enableleKeys() {
+    for (let i = 0; i < alphabet.length; i++) {
+        alphabet[i].disabled=false;
+        alphabet[i].style.backgroundColor='';
+        alphabet[i].style.color='';
+    }
+}
+
+function playAgain() {
+    const againBtn=document.createElement('button');
+    againBtn.innerHTML="PLAY AGAIN";
+    livesDisplay.style.display='none';
+    //classlist.add to style
+    livesDisplay.after(againBtn);
+    againBtn.addEventListener('click',function () {
+        Scene.innerHTML="";
+        enableleKeys();
+    });
+}
 
 
 // function playTurn() {
