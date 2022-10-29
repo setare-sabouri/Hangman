@@ -73,10 +73,7 @@ input {
 }
 .display-life {
   display: flex;
-  color: var(--KombuGreen);
-  font-size: 1.5rem;
-  text-shadow: 0.1rem 0.1rem var(--darkSeaGreen);
-  font-weight: bold;
+  gap: 0.3rem;
 }
 .again-btn {
   display: none;
