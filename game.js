@@ -1,27 +1,50 @@
 'use strict'
 const form=document.querySelector('#input-form');
 const alphabet=document.querySelectorAll('.letter');
-const Scene=document.getElementById('game-container');
-const livesDisplay=document.getElementById('display-life');
-const againContainer=document.getElementById('again-btn');
+const Scene=document.querySelector('.game-container');
+const livesDisplay=document.querySelector('.display-life');
+const againBtnn=document.getElementById('again-btn');
 let CurrentSpots=[];
 let letters=[];
 let lives=0;
 let guessingWord='';
 let clickedLetter='empty';
-//initialize func to reset , play again
+//initialize func to reset & play again
 form.onsubmit=function(event) {
-    event.preventDefault();
-    guessingWord=form.elements.wordToGuess.value;
+    event.preventDefault(); // is this needed ?
+    guessingWord=form.elements['wordToGuess'].value; 
     if (!guessingWord) {
-        alert("there is no word to guess !")
+        alert("PLAYER 1 Enter a word to guess !")
     }
     if (guessingWord) {
-        letters=guessingWord.toUpperCase().split("");
-        form.elements.wordToGuess.value='';
-        SetScene(letters); 
+        form.elements['wordToGuess'].value='';
+        SetScene(guessingWord); 
     }
 }
+
+function SetScene(guessingWord) {
+    letters=guessingWord.toUpperCase().split("");
+    Scene.innerHTML="";
+    for (let i = 0; i < letters.length; i++) {
+        let spot=document.createElement('span')
+        spot.classList.add('spot');
+        spot.innerHTML="___";
+        Scene.append(spot);
+       
+    }
+    lives=5;
+    displaylives(lives);
+}
+
+function displaylives(lives) {  //it adds everytime !! how to stop this ?
+    for (let i =0; i < lives; i++) {
+        let img=document.createElement('img');
+        img.src="heart.png";
+        livesDisplay.prepend(img);
+    }
+
+}
+
 alphabet.forEach(element => {
     element.addEventListener('click', function(event) {
         event.stopPropagation();
@@ -61,26 +84,14 @@ function UpdateScene(letter,index) {
     CurrentSpots[index].innerHTML=letter;
 }
 
-function SetScene(letters) {
-    Scene.innerHTML="";
-    for (let i = 0; i < letters.length; i++) {
-        let spot=document.createElement('span')
-        spot.classList.add('spot');
-        spot.innerHTML=" _ ";
-        Scene.append(spot);
-        //lifes can be aaded here in update visually myb 
-    }
-    livesDisplay.innerHTML="you have 5 chances";
-    lives=5;
-    // displayLive(lives);
-}
+
 
 function win(spots) {
     let check=[];
     for (let i = 0; i < spots.length; i++) {
         check[i]=spots[i].innerHTML;
     }
-    if (!check.includes(" _ ")) {
+    if (!check.includes("___")) {
         alert("YES IT IS "+letters.join('')+" YOU WON!");
         disableKeys();
     }
@@ -112,15 +123,7 @@ function disableKeys() {
     }
 }
 
-function displaylive(lives) {
-    //to check 
-    for (let i = 0; i < lives; i--) {
-        let img=document.createElement("img");
-        img.src="heart.png";
-        livesDisplay.append(img);
-    }
 
-}
 
 // function enableleKeys() {
 //     for (let i = 0; i < alphabet.length; i++) {
