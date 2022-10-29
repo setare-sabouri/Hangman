@@ -133,7 +133,7 @@ function playAgain() {
     const againBtn=document.createElement('button');
     againBtn.innerHTML="PLAY AGAIN";
     livesDisplay.style.display='none';
-    //classlist.add to style
+    againBtn.classList.add('again-btn')
     livesDisplay.after(againBtn);
     againBtn.addEventListener('click',function () {
         Scene.innerHTML="";

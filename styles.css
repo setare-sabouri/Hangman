@@ -75,9 +75,12 @@ input {
   display: flex;
   gap: 0.3rem;
 }
-/* .again-btn {
-  display: none;
-} */
+.again-btn {
+  border-radius: var(--radius);
+  background-color: var(--KombuGreen);
+  color: var(--teaGreen);
+  padding: var(--innerPadding);
+}
 @media screen and (min-width: 480px) {
   .game-header h1 {
     font-size: 5rem;
