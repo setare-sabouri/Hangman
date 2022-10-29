@@ -29,11 +29,10 @@ function SetScene(guessingWord) {
         spot.classList.add('spot');
         spot.innerHTML = "___";
         Scene.append(spot);
-
     }
-    displaylives(5);
+    lives=5;
+    displaylives(lives);
 }
-
 function displaylives(lives) { 
     if (lives === 5) {
         for (let i = 0; i < lives; i++) {
@@ -43,7 +42,7 @@ function displaylives(lives) {
         }
     } 
     else { 
-
+        livesDisplay.removeChild(livesDisplay.lastElementChild);
     }
 
 }
@@ -79,7 +78,7 @@ function validate(clickedLetter) {
 }
 function updateKeyboard(button, state) {
     button.disabled = true;
-    button.style.color = 'white';
+    button.style.color = 'white'; //add class deactive instead
     // add extra css later here & do classadd instead
     if (state === true) {
         button.style.backgroundColor = 'rgb(255, 118, 118)';
@@ -97,7 +96,7 @@ function win() {
     for (let i = 0; i < CurrentSpots.length;i++) { // it iterates every turn !! how to stop this ?
         check[i] = CurrentSpots[i].innerHTML;
     }
-    if (!check.includes("___")) { //myb deleting the check is solution ?
+    if (!check.includes("___")) { //myb deleting the check[] is solution ?
         alert("YES IT IS " + letters.join('') + " YOU WON!");
         disableKeys();
         //play again()
@@ -106,7 +105,7 @@ function win() {
 
 function lose() {
     lives--;
-    // displaylive(lives);
+    displaylives(lives);
     if (lives <= 0) {
         alert("GAME OVER ! it was " + guessingWord);
         disableKeys();
