@@ -23,6 +23,7 @@ form.onsubmit = function (event) {
 }
 function SetScene(guessingWord) {
     enableleKeys();
+    livesDisplay.innerHTML=''; //remove all children
     letters = guessingWord.toUpperCase().split("");
     Scene.innerHTML = "";
     for (let i = 0; i < letters.length; i++) {
@@ -34,7 +35,8 @@ function SetScene(guessingWord) {
     lives=5;
     displaylives(lives);
 }
-function displaylives(lives) { 
+function displaylives(lives) {
+    livesDisplay.style.display='flex';
     if (lives === 5) {
         for (let i = 0; i < lives; i++) {
             let img = document.createElement('img');
@@ -132,12 +134,13 @@ function enableleKeys() {
 function playAgain() {
     const againBtn=document.createElement('button');
     againBtn.innerHTML="PLAY AGAIN";
+    againBtn.classList.add('again-btn');
     livesDisplay.style.display='none';
-    againBtn.classList.add('again-btn')
     livesDisplay.after(againBtn);
     againBtn.addEventListener('click',function () {
         Scene.innerHTML="";
-        enableleKeys();
+        form.style.display="block";
+        againBtn.remove();
     });
 }
 
