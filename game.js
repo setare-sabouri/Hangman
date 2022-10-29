@@ -34,7 +34,7 @@ function SetScene(guessingWord) {
     displaylives(5);
 }
 
-function displaylives(lives) { // it adds everytime !! how to stop this ?
+function displaylives(lives) { 
     if (lives === 5) {
         for (let i = 0; i < lives; i++) {
             let img = document.createElement('img');
@@ -59,7 +59,7 @@ function playTurn(btn) {
     const clickedLetter = btn.innerHTML;
     if (validate(clickedLetter)) {
         updateKeyboard(btn, true);
-        win(CurrentSpots);
+        win();
     } else {
         updateKeyboard(btn, false);
         lose();
@@ -68,7 +68,7 @@ function playTurn(btn) {
 }
 
 function validate(clickedLetter) {
-    let used = false
+    let used = false;
     for (let i = 0; i < letters.length; i++) {
         if (clickedLetter === letters[i]) {
             UpdateScene(letters[i], i);
@@ -77,21 +77,30 @@ function validate(clickedLetter) {
     }
     return used;
 }
-
+function updateKeyboard(button, state) {
+    button.disabled = true;
+    button.style.color = 'white';
+    // add extra css later here & do classadd instead
+    if (state === true) {
+        button.style.backgroundColor = 'rgb(255, 118, 118)';
+    } else {
+        button.style.backgroundColor = 'rgb(146, 124, 124)';
+    }
+}
 function UpdateScene(letter, index) {
     CurrentSpots = document.querySelectorAll('.spot');
     CurrentSpots[index].innerHTML = letter;
 }
 
-
-function win(spots) {
+function win() {
     let check = [];
-    for (let i = 0; i < spots.length; i++) {
-        check[i] = spots[i].innerHTML;
+    for (let i = 0; i < CurrentSpots.length;i++) { // it iterates every turn !! how to stop this ?
+        check[i] = CurrentSpots[i].innerHTML;
     }
-    if (!check.includes("___")) {
+    if (!check.includes("___")) { //myb deleting the check is solution ?
         alert("YES IT IS " + letters.join('') + " YOU WON!");
         disableKeys();
+        //play again()
     }
 }
 
@@ -103,16 +112,7 @@ function lose() {
         disableKeys();
     }
 }
-function updateKeyboard(button, state) {
-    button.disabled = true;
-    button.style.color = 'white';
-    // add extra css later here
-    if (state === true) {
-        button.style.backgroundColor = 'rgb(255, 118, 118)';
-    } else {
-        button.style.backgroundColor = 'rgb(146, 124, 124)';
-    }
-}
+
 
 function disableKeys() {
     for (let i = 0; i < alphabet.length; i++) {
