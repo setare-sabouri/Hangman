@@ -1,4 +1,5 @@
-'use strict' const form = document.querySelector('#input-form');
+'use strict' 
+const form = document.querySelector('#input-form');
 const alphabet = document.querySelectorAll('.letter');
 const Scene = document.querySelector('.game-container');
 const livesDisplay = document.querySelector('.display-life');
@@ -30,8 +31,7 @@ function SetScene(guessingWord) {
         Scene.append(spot);
 
     }
-    lives = 5;
-    displaylives(lives);
+    displaylives(5);
 }
 
 function displaylives(lives) { // it adds everytime !! how to stop this ?
