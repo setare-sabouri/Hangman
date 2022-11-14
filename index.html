@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
     <title>Hangman</title>
   </head>
   <body>
+    <header class="game-header">
+      <h1>HANG MAN</h1>
+    </header>
     <main class="main-wrapper">
-      <header class="game-header">
-        <h1>HANG MAN</h1>
-      </header>
       <section class="user-input" id="user-input">
         <form action="#" id="input-form">
           <input
@@ -53,6 +57,11 @@
       <section class="game-container flex" id="game-container"></section>
       <section class="display-life" id="display-life"></section>
     </main>
-    <script src="game.js"></script>
+    <footer class="footerContainer">
+      <a href="https://github.com/setare-sabouri/Hangman"
+        ><i class="fa fa-github fa-2x fa_custom"></i
+      ></a>
+    </footer>
+    <script src="Scripts/game.js"></script>
   </body>
 </html>

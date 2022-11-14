@@ -21,23 +21,29 @@ img {
 }
 body {
   font-family: "Anybody", cursive;
-}
-.main-wrapper {
-  background-color: var(--RussianGreen);
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  background-color: var(--darkreader-bg--RussianGreen);
 }
 .game-header {
+  text-align: center;
   font-family: "Codystar", cursive;
   color: var(--teaGreen);
-  text-shadow: 0.3rem 0.3rem var(--KombuGreen);
+  text-shadow: 0.3rem 0.3rem var(--teaGreen);
+  margin-top: 1rem;
 }
 .game-header h1 {
   font-size: 3rem;
+}
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .play-btn,
@@ -81,8 +87,17 @@ input {
   color: var(--teaGreen);
   padding: var(--innerPadding);
 }
+.footerContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--darkreader-bg--RussianGreen);
+}
+.footerContainer a {
+  color: var(--KombuGreen);
+}
 @media screen and (min-width: 480px) {
   .game-header h1 {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
