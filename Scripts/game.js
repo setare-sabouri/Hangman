@@ -1,4 +1,4 @@
-'use strict' 
+'use strict'
 const form = document.querySelector('#input-form');
 const alphabet = document.querySelectorAll('.letter');
 const Scene = document.querySelector('.game-container');
@@ -8,6 +8,12 @@ let letters = [];
 let lives = 0;
 let guessingWord = '';
 disableKeys();
+
+
+import { setScore, getScore } from "../Scripts/Data.js";
+setScore("seti", 60);
+console.log(getScore("seti"));
+
 // initialize func to reset & play again
 form.onsubmit = function (event) {
     event.preventDefault(); // is this needed ?
@@ -23,7 +29,7 @@ form.onsubmit = function (event) {
 }
 function SetScene(guessingWord) {
     enableleKeys();
-    livesDisplay.innerHTML=''; //remove all children
+    livesDisplay.innerHTML = ''; //remove all children
     letters = guessingWord.toUpperCase().split("");
     Scene.innerHTML = "";
     for (let i = 0; i < letters.length; i++) {
@@ -32,19 +38,19 @@ function SetScene(guessingWord) {
         spot.innerHTML = "___";
         Scene.append(spot);
     }
-    lives=5;
+    lives = 5;
     displaylives(lives);
 }
 function displaylives(lives) {
-    livesDisplay.style.display='flex';
+    livesDisplay.style.display = 'flex';
     if (lives === 5) {
         for (let i = 0; i < lives; i++) {
             let img = document.createElement('img');
-            img.src = "heart.png";
+            img.src = "../heart.png";
             livesDisplay.prepend(img);
         }
-    } 
-    else { 
+    }
+    else {
         livesDisplay.removeChild(livesDisplay.lastElementChild);
     }
 
@@ -95,7 +101,7 @@ function UpdateScene(letter, index) {
 
 function win() {
     let check = [];
-    for (let i = 0; i < CurrentSpots.length;i++) { // it iterates every turn !! how to stop this ?
+    for (let i = 0; i < CurrentSpots.length; i++) { // it iterates every turn !! how to stop this ?
         check[i] = CurrentSpots[i].innerHTML;
     }
     if (!check.includes("___")) { //myb deleting the check[] is solution ?
@@ -125,21 +131,21 @@ function disableKeys() {
 
 function enableleKeys() {
     for (let i = 0; i < alphabet.length; i++) {
-        alphabet[i].disabled=false;
-        alphabet[i].style.backgroundColor='';
-        alphabet[i].style.color='';
+        alphabet[i].disabled = false;
+        alphabet[i].style.backgroundColor = '';
+        alphabet[i].style.color = '';
     }
 }
 
 function playAgain() {
-    const againBtn=document.createElement('button');
-    againBtn.innerHTML="PLAY AGAIN";
+    const againBtn = document.createElement('button');
+    againBtn.innerHTML = "PLAY AGAIN";
     againBtn.classList.add('again-btn');
-    livesDisplay.style.display='none';
+    livesDisplay.style.display = 'none';
     livesDisplay.after(againBtn);
-    againBtn.addEventListener('click',function () {
-        Scene.innerHTML="";
-        form.style.display="block";
+    againBtn.addEventListener('click', function () {
+        Scene.innerHTML = "";
+        form.style.display = "block";
         againBtn.remove();
     });
 }
@@ -166,3 +172,4 @@ function playAgain() {
 
 
 // }
+

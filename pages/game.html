@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <title>Hangman</title>
+  </head>
+  <body>
+    <header class="game-header">
+      <h1>HANG MAN</h1>
+    </header>
+    <main class="main-wrapper">
+      <section class="user-input" id="user-input">
+        <form action="#" id="input-form">
+          <input
+            type="text"
+            name="wordToGuess"
+            placeholder="WORD TO GUESS"
+            autocomplete="off"
+          />
+          <button class="play-btn" type="submit">PLAY</button>
+        </form>
+      </section>
+      <section class="alphabet-container flex" id="alphabet-container">
+        <button class="letter">A</button>
+        <button class="letter">B</button>
+        <button class="letter">C</button>
+        <button class="letter">D</button>
+        <button class="letter">E</button>
+        <button class="letter">F</button>
+        <button class="letter">G</button>
+        <button class="letter">H</button>
+        <button class="letter">I</button>
+        <button class="letter">J</button>
+        <button class="letter">K</button>
+        <button class="letter">L</button>
+        <button class="letter">M</button>
+        <button class="letter">N</button>
+        <button class="letter">O</button>
+        <button class="letter">P</button>
+        <button class="letter">Q</button>
+        <button class="letter">R</button>
+        <button class="letter">S</button>
+        <button class="letter">T</button>
+        <button class="letter">U</button>
+        <button class="letter">W</button>
+        <button class="letter">X</button>
+        <button class="letter">Y</button>
+        <button class="letter">Z</button>
+      </section>
+      <section class="game-container flex" id="game-container"></section>
+      <section class="display-life" id="display-life"></section>
+    </main>
+    <footer class="footerContainer">
+      <a href="https://github.com/setare-sabouri/Hangman"
+        ><i class="fa fa-github fa-2x fa_custom"></i
+      ></a>
+    </footer>
+    <script src="../Scripts/game.js" type="module"></script>
+  </body>
+</html>

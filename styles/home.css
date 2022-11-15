@@ -1,0 +1,22 @@
+.setting-main-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+  background-image: url("../Assests/Hang.webp");
+  background-position: center;
+  background-size: cover;
+  background-color: #504848;
+  background-blend-mode: multiply;
+}
+a {
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #b50000;
+  color: white;
+  width: 30%;
+}
