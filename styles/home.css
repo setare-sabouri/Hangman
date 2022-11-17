@@ -12,7 +12,7 @@
   background-color: #504848;
   background-blend-mode: multiply;
 }
-a {
+.settingLink {
   text-decoration: none;
   padding: 1rem;
   border-radius: 0.5rem;

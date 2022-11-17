@@ -1,4 +1,4 @@
-'use strict'
+import { disableKeys, enableleKeys, updateKeyboard } from "./keyboard.js";
 const form = document.querySelector('#input-form');
 const alphabet = document.querySelectorAll('.letter');
 const Scene = document.querySelector('.game-container');
@@ -7,28 +7,13 @@ let CurrentSpots = [];
 let letters = [];
 let lives = 0;
 let guessingWord = '';
-disableKeys();
-
-
-import { setScore, getScore } from "../Scripts/Data.js";
-setScore("seti", 60);
-console.log(getScore("seti"));
-
+disableKeys(alphabet);
+// import { setScore, getScore } from "../Scripts/Data.js";
+// setScore("seti", 60);
+// console.log(getScore("seti"));
 // initialize func to reset & play again
-form.onsubmit = function (event) {
-    event.preventDefault(); // is this needed ?
-    guessingWord = form.elements['wordToGuess'].value;
-    if (!guessingWord) {
-        alert("PLAYER 1 Enter a word to guess !")
-    }
-    if (guessingWord) {
-        form.elements['wordToGuess'].value = '';
-        SetScene(guessingWord);
-        form.style.display = "none";
-    }
-}
 function SetScene(guessingWord) {
-    enableleKeys();
+    enableleKeys(alphabet);
     livesDisplay.innerHTML = ''; //remove all children
     letters = guessingWord.toUpperCase().split("");
     Scene.innerHTML = "";
@@ -40,6 +25,20 @@ function SetScene(guessingWord) {
     }
     lives = 5;
     displaylives(lives);
+}
+
+
+form.onsubmit = function (event) {
+    event.preventDefault(); // is this needed ?
+    guessingWord = form.elements['wordToGuess'].value;
+    if (!guessingWord) {
+        alert("PLAYER 1 Enter a word to guess !")
+    }
+    if (guessingWord) {
+        form.elements['wordToGuess'].value = '';
+        SetScene(guessingWord);
+        form.style.display = "none";
+    }
 }
 function displaylives(lives) {
     livesDisplay.style.display = 'flex';
@@ -84,16 +83,7 @@ function validate(clickedLetter) {
     }
     return used;
 }
-function updateKeyboard(button, state) {
-    button.disabled = true;
-    button.style.color = 'white'; //add class deactive instead
-    // add extra css later here & do classadd instead
-    if (state === true) {
-        button.style.backgroundColor = 'rgb(255, 118, 118)';
-    } else {
-        button.style.backgroundColor = 'rgb(146, 124, 124)';
-    }
-}
+
 function UpdateScene(letter, index) {
     CurrentSpots = document.querySelectorAll('.spot');
     CurrentSpots[index].innerHTML = letter;
@@ -106,7 +96,7 @@ function win() {
     }
     if (!check.includes("___")) { //myb deleting the check[] is solution ?
         alert("YES IT IS " + letters.join('') + " YOU WON!");
-        disableKeys();
+        disableKeys(alphabet);
         playAgain();
     }
 }
@@ -117,25 +107,11 @@ function lose() {
     //set time out or ?? to show the last live
     if (lives <= 0) {
         alert("GAME OVER ! it was " + guessingWord);
-        disableKeys();
+        disableKeys(alphabet);
         playAgain();
     }
 }
 
-function disableKeys() {
-    for (let i = 0; i < alphabet.length; i++) {
-        alphabet[i].disabled = true;
-    }
-}
-
-
-function enableleKeys() {
-    for (let i = 0; i < alphabet.length; i++) {
-        alphabet[i].disabled = false;
-        alphabet[i].style.backgroundColor = '';
-        alphabet[i].style.color = '';
-    }
-}
 
 function playAgain() {
     const againBtn = document.createElement('button');
