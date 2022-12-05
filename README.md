@@ -1,5 +1,13 @@
 # Hangman
-https://hangmanwithjavascript.netlify.app/
-
 Welcome╰(*°▽°*)╯
+Here is the [Link to game](https://hangmanwithjavascript.netlify.app/)
+
+## Flow
+
+## APIs
+
+## Files functionality
+
+## updates
+
 
