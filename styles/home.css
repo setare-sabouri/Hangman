@@ -20,3 +20,9 @@
   color: white;
   width: 30%;
 }
+
+@media screen and (min-width: 600px) {
+  .settingLink {
+    width: 15%;
+  }
+}
