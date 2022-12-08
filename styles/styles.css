@@ -1,8 +1,8 @@
 :root {
   --teaGreen: #c9f2c7;
   --GrannySmithApple: #aceca1;
-  --darkSeaGreen: #96be8c;
-  --RussianGreen: #629460;
+  --palesilver: #C1B4AE;
+  --cooper: #BE7C4D;
   --KombuGreen: #243119;
   --innerPadding: 1rem;
   --radius: 0.5rem;
@@ -14,7 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--RussianGreen);
+  background-color: var(--cooper);
 }
 .main-wrapper {
   display: flex;
@@ -27,7 +27,7 @@ body {
   text-align: center;
   font-family: "Codystar", cursive;
   color: var(--KombuGreen);
-  text-shadow: 0.3rem 0.3rem var(--teaGreen);
+  text-shadow: 0.3rem 0.3rem var(--palesilver);
 }
 .game-header h1 {
   font-size: 3rem;
@@ -47,7 +47,7 @@ input {
 }
 .alphabet-container {
   width: 90%;
-  background-color: var(--darkSeaGreen);
+  background-color: var(--palesilver);
   padding: 1rem;
   border-radius: var(--radius);
 }
@@ -59,7 +59,7 @@ input {
   background-color: rgb(234, 183, 166);
 }
 .spot {
-  background-color: var(--teaGreen);
+  background-color: var(--palesilver);
   padding: 1rem;
   font-weight: bold;
   border-radius: var(--radius);
@@ -72,7 +72,7 @@ input {
 .again-btn {
   border-radius: var(--radius);
   background-color: var(--KombuGreen);
-  color: var(--teaGreen);
+  color: var(--palesilver);
   padding: var(--innerPadding);
 }
 .footerContainer {
@@ -84,6 +84,12 @@ input {
 .footerContainer a {
   color: white;
 }
+/* ----------------------------for singleGame styles----------------- */
+.def-container {
+  padding: 0 1rem;
+  color: black;
+}
+
 @media screen and (min-width: 480px) {
   .game-header h1 {
     font-size: 4rem;
