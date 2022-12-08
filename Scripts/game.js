@@ -1,5 +1,4 @@
 import { disableKeys, enableleKeys, updateKeyboard } from "./keyboard.js";
-import { setScore, getScore } from "../Scripts/Data.js";
 
 const form = document.querySelector('#input-form');
 const alphabet = document.querySelectorAll('.letter');
@@ -10,8 +9,6 @@ let letters = [];
 let lives = 0;
 let guessingWord = '';
 disableKeys(alphabet);
-// setScore("seti", 60);
-// console.log(getScore("seti"));
 // initialize func to reset & play again
 function SetScene(guessingWord) {
     enableleKeys(alphabet);
@@ -46,7 +43,7 @@ function displaylives(lives) {
     if (lives === 5) {
         for (let i = 0; i < lives; i++) {
             let img = document.createElement('img');
-            img.src = "../Assets/heart.png";
+            img.src = "../heart.png";
             livesDisplay.prepend(img);
         }
     }
