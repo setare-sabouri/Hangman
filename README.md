@@ -9,5 +9,5 @@ Here is the [Link to game](https://hangmanwithjavascript.netlify.app/)
 ## Files functionality
 
 ## updates
-
++ adding score board
 
