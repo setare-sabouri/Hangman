@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 1.5rem;
   text-align: center;
-  background-image: url("../Assests/Hang.webp");
+  background-image: url("../Assests/jungle-head.gif");
   background-position: center;
   background-size: cover;
   background-color: #504848;
@@ -14,15 +14,12 @@
 }
 .settingLink {
   text-decoration: none;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 2rem;
+  border-radius: 2.5rem 0;
   background-color: #b50000;
   color: white;
-  width: 30%;
+  width: 70%;
+  font-size: 2rem;
 }
 
-@media screen and (min-width: 600px) {
-  .settingLink {
-    width: 15%;
-  }
-}
+
