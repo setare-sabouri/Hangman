@@ -18,7 +18,7 @@ function initializeScene() {
     getWord().then((datas) => {
         let definition = datas.dictionary[0].shortdef;
         if (!definition) {
-            wordEl.innerHTML = `No hints found but keep gussing 🕵🏽‍♂️`;
+            wordEl.innerHTML = `Hint: No hints found but keep gussing 🕵🏽‍♂️`;
         }
         else {
             wordEl.innerHTML = `HINT : ${definition}`;
