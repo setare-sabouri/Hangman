@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hanged Man
+* source:	https://sketchfab.com/3d-models/hanged-man-a96aa64ae83049e48c0fe6f5abe46422
+* author:	WhyBlue (https://sketchfab.com/whyblue)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hanged Man" (https://sketchfab.com/3d-models/hanged-man-a96aa64ae83049e48c0fe6f5abe46422) by WhyBlue (https://sketchfab.com/whyblue) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
