@@ -1,8 +1,9 @@
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Landing from './Components/Landing';
 import GamePage from './Components/GamePage';
 import Experience from './Components/Experience';
+import './styles.scss';
+
 function App() {
   return (
     <BrowserRouter>
