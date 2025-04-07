@@ -13,6 +13,15 @@ export default create(subscribeWithSelector(
                 isMobile: value
             }
         })
-    }
+    },
+
+    lives:6,
+    setLives:(value)=>{
+        set((state)=>{
+            return {
+                lives: value
+            }
+        })
+    },
 })
 ))
