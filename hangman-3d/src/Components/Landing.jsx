@@ -21,23 +21,20 @@ const Landing = () => {
          <Canvas
                 camera={{
                     position: isMobileQuery ? [0, 0, 10] : [0, 5, 20],  
-                    fov: isMobileQuery ? 50 : 90,  
+                    fov: isMobileQuery ? 70 : 60,  
                                       
                 }}>
                 <OrbitControls maxDistance={10}/>
                 <color attach="background" args={['#555555']} />
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1} /> 
-               <group position={[0,0,0]}>
+               <group >
                 <HangedMan/>
                </group>
-                <axesHelper args={[5]} />
+                {/* <axesHelper args={[5]} /> */}
             </Canvas>
 
 
-        {/* <Link to="/game">
-        <h1>Welcome to Hangman 3D</h1>
-        </Link> */}
     </>
   )
 }
