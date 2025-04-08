@@ -7,18 +7,10 @@ export default create(subscribeWithSelector(
     
   (set)=>({
     isMobile: false,
-
     setIsMobile:(value)=>{
         set((state)=>{
             return {
                 isMobile: value
-            }
-        })
-    },
-    setLives:(value)=>{
-        set((state)=>{
-            return {
-                lives: value
             }
         })
     },
@@ -39,5 +31,9 @@ export default create(subscribeWithSelector(
             }
         })
     },
+
+
+    lives: 6,
+    displaylives: (lives) => set((state) => ({ lives: state.lives - 1 })),
 })
 ))

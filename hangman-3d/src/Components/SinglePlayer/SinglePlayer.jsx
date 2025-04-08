@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import './SinglePlayer.scss'
 import useScene from '../../Stores/useScene'
-import { Text } from '@react-three/drei';
 import { getWord } from '../../API';
 import useGame from '../../Stores/useGame';
 import Hearts from '../Lives/Heart';
-
+import KeyPad from './keyPad';
 const SinglePlayer = () => {
-  // const [word, setWord] = useState(null);
-  const { setScene } = useScene((state) => state);
 
+  const { setScene } = useScene((state) => state);
   const { setWord, setWordMeaning } = useGame((state) => state);
   const { word } = useGame((state) => state);
   const { wordMeaning } = useGame((state) => state);
+  const { lives } = useGame((state) => state);
+  const { displaylives } = useGame((state) => state);
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -29,27 +29,27 @@ const SinglePlayer = () => {
   }, []);
 
   useEffect(() => {
-  if(word && wordMeaning) {
-    console.log(wordMeaning);
-    setScene(
-      <Hearts/>
-    );
-    return () => setScene(null);
-  }
+    if (word && wordMeaning) {
+      setScene(
+        <Hearts />
+      );
+      return () => setScene(null);
+    }
   }, [word])
 
   return (
 
     <>
       <div className='single-player-ui'>
-        <h1>Hang Man</h1>
-        <p>
+        <h1 onClick={() => {
+
+          displaylives(lives - 1)
+        }} >Hang Man</h1>
+        <p >
           Hint : {wordMeaning}
         </p>
+        <KeyPad />
       </div>
-   // a hint of the word which comes from API
-    //display alphabet 
-    // a small canvas to show 3D lives 
     </>
   )
 }

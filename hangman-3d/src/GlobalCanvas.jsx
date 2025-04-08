@@ -20,7 +20,7 @@ const GlobalCanvas = () => {
         <Canvas
             camera={{
                 position: isMobileQuery ? [0, 0, 10] : [0, -5, 20],
-                fov: isMobileQuery ? 100 : 60,
+                fov: isMobileQuery ? 80 : 60,
 
             }}>
             <OrbitControls maxDistance={10} />
@@ -28,7 +28,7 @@ const GlobalCanvas = () => {
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             {scene}
-            <axesHelper args={[5]} />
+            {/* <axesHelper args={[5]} /> */}
         </Canvas>
     )
 }
