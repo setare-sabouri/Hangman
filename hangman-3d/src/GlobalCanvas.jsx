@@ -28,6 +28,7 @@ const GlobalCanvas = () => {
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             {scene}
+            <axesHelper args={[5]} />
         </Canvas>
     )
 }

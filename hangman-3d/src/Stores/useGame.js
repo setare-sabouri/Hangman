@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 
 
 export default create(subscribeWithSelector(
+    
   (set)=>({
     isMobile: false,
 
@@ -14,12 +15,27 @@ export default create(subscribeWithSelector(
             }
         })
     },
-
-    lives:6,
     setLives:(value)=>{
         set((state)=>{
             return {
                 lives: value
+            }
+        })
+    },
+
+    word:null,
+    setWord:(value)=>{
+        set((state)=>{
+            return {
+                word: value
+            }
+        })
+    },
+    wordMeaning:null,
+    setWordMeaning:(value)=>{
+        set((state)=>{
+            return {
+                wordMeaning: value
             }
         })
     },

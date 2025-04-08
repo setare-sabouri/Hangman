@@ -1,0 +1,1 @@
+alphabet : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
