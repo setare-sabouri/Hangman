@@ -3,14 +3,17 @@ import './SinglePlayer.scss'
 import useScene from '../../Stores/useScene'
 import { getWord } from '../../API';
 import useGame from '../../Stores/useGame';
+import useAlphabet from '../../Stores/useAlphabet';
 import Hearts from '../Lives/Heart';
 import KeyPad from './keyPad';
+import WordDisplay from './WordDisplay';
+import RestartLay from '../RestartLay';
+
+
 const SinglePlayer = () => {
 
   const { setScene } = useScene((state) => state);
-  const { setWord, setWordMeaning } = useGame((state) => state);
-  const { word } = useGame((state) => state);
-  const { wordMeaning } = useGame((state) => state);
+  const { wordMeaning,word,setWord,setWordMeaning,disableAllLetters } = useAlphabet((state) => state);
   const { lives } = useGame((state) => state);
   const { displaylives } = useGame((state) => state);
 
@@ -18,14 +21,28 @@ const SinglePlayer = () => {
     const fetchWord = async () => {
       try {
         const response = await getWord();
-        setWord(response);
+        setWord(response.word[0].toUpperCase());
         setWordMeaning(response.meaning[0].shortdef[0]);
       } catch (error) {
         console.error('Error fetching word:', error);
       }
     };
-
     fetchWord();
+
+    const unSubscribeLose= useGame.subscribe(
+      (state)=>state.lives,
+      (lives)=>{
+          if(lives===0){
+            console.log("oppppps lives are done now")
+            disableAllLetters()
+          }
+         
+      }
+      )
+
+      return()=>{
+        unSubscribeLose()
+      }
   }, []);
 
   useEffect(() => {
@@ -49,6 +66,8 @@ const SinglePlayer = () => {
           Hint : {wordMeaning}
         </p>
         <KeyPad />
+        <WordDisplay/>
+       {lives===0 &&  <RestartLay/>}
       </div>
     </>
   )
