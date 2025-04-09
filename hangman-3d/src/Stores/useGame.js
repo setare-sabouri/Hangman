@@ -1,11 +1,11 @@
 import {create} from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
-import { useMediaQuery } from 'react-responsive'
+import useAlphabet from './useAlphabet'
 
 
 export default create(subscribeWithSelector(
     
-  (set)=>({
+    (set)=>({
     isMobile: false,
 
     setIsMobile:(value)=>{
@@ -17,10 +17,17 @@ export default create(subscribeWithSelector(
     },
 
 
-
     lives: 6,
-    displaylives: (lives) => set((state) => ({ lives: state.lives - 1 })),
-  
- 
+    resetLives:()=> () => set((state) => ({ lives:-1 })),
+    displaylives: (value) => set((state) => ({ lives: state.lives - 1 })),
+
+    resetGame: () => {
+        const ResetLetters = useAlphabet.getState().ResetLetters;
+        ResetLetters();
+        set(() => ({
+          lives: 6
+        }));
+      }
+      ,
 })
 ))

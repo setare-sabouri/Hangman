@@ -9,12 +9,13 @@ const WordDisplay = () => {
   if (!word) return null;
 
   const display = word.split('').map((char, idx) =>
-    guessedLetters.includes(char) ? (
-      <span key={idx} className='letter'>{char}</span>
-    ) : (
-      <span key={idx} className='letter'>_</span>
-    )
+
+    guessedLetters.includes(char) ? 
+    (<span key={idx} className='letter'>{char}</span>)
+       : 
+    (<span key={idx} className='letter'>_</span>)
   );
+  
 
   return <div className='word-display'>{display}</div>;
 };

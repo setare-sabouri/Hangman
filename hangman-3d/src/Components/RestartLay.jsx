@@ -1,8 +1,9 @@
-import React from 'react'
-
+import React, { use } from 'react'
+import useGame from '../Stores/useGame'
 const RestartLay = () => {
+    const resetGame =useGame((state)=>(state.resetGame))
   return (
-    <div>
+    <div className='restart' onClick={resetGame}>
       <h1>
       Restart
       </h1>
