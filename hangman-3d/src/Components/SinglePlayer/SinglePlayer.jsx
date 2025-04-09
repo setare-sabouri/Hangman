@@ -13,8 +13,8 @@ import RestartLay from '../RestartLay';
 const SinglePlayer = () => {
 
   const { setScene } = useScene((state) => state);
-  const { wordMeaning,word,setWord,setWordMeaning,disableAllLetters,guessedLetters,hasWon } = useAlphabet((state) => state);
-  const { lives,resetLives } = useGame((state) => state);
+  const { wordMeaning,word,setWord,setWordMeaning,disableAllLetters,hasWon } = useAlphabet((state) => state);
+  const { lives,resetLives,displaylives } = useGame((state) => state);
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -27,10 +27,12 @@ const SinglePlayer = () => {
       }
     };
     fetchWord();
+    console.log("this ssssss one")
 
     const unSubscribeLose= useGame.subscribe(
       (state)=>state.lives,
       (lives)=>{
+        console.log(lives)
           if(lives<=0){
             console.log("oppppps lives are done now",lives)
             disableAllLetters()
@@ -40,14 +42,12 @@ const SinglePlayer = () => {
       }
       )
 
-      
       const unSubscribeWon= useAlphabet.subscribe(
         (state)=>state.hasWon,
         (hasWon)=>{
             if(hasWon){
               console.log("🎉 YOU WON!");
-              resetLives()
-      
+              displaylives(0)
               disableAllLetters();
               console.log(lives)
             }
@@ -56,7 +56,6 @@ const SinglePlayer = () => {
         }
         )
 
-    
 
       return()=>{
         unSubscribeLose()
@@ -74,18 +73,13 @@ const SinglePlayer = () => {
   }, [word])
 
   return (
-
-    <>
       <div className='single-player-ui'>
         <h1>Hang Man</h1>
-        <p >
-          Hint : {wordMeaning}
-        </p>
+        <p > Hint : {wordMeaning} </p>
         <KeyPad />
         <WordDisplay/>
        {(lives<=0 || hasWon) &&  <RestartLay/>}
       </div>
-    </>
   )
 }
 

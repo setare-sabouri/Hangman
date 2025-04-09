@@ -10,7 +10,7 @@ const KeyPad = () => {
   
 console.log(word)
     if (!word.includes(letter)) {
-      displaylives();
+      displaylives(lives-1);
       console.log("not a part of it ")
     }
 

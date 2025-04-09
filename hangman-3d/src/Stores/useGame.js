@@ -18,8 +18,7 @@ export default create(subscribeWithSelector(
 
 
     lives: 6,
-    resetLives:()=> () => set((state) => ({ lives:-1 })),
-    displaylives: (value) => set((state) => ({ lives: state.lives - 1 })),
+    displaylives: (value) => set((state) => ({ lives: value})),
 
     resetGame: () => {
         const ResetLetters = useAlphabet.getState().ResetLetters;

@@ -14,7 +14,7 @@ const HangedMan = () => {
              color="white" 
              position={[-6, 5, 0]} 
              anchorX="center"
-            anchorY="middle"
+             anchorY="middle"
             
             onClick={() => window.location.href = '/game/onePlayer'}
             >
