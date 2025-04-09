@@ -1,0 +1,31 @@
+@import '../../../variables';
+
+.keypad {
+    width: 80%;
+    padding: 2rem 3rem;
+    background-color: $transparent;
+    border-radius: $radius;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+
+    .letter {
+        padding: 1rem;
+        border: 2px solid $light-red;
+        border-radius: $radius;
+        font-family:$fontFamily ;
+        font-size: $fontSize;
+
+        &:hover {
+            background-color: $light-red;
+            color: $light-white;
+          }
+
+        &.disabled {
+            background-color: $darke-red; 
+            color: $transparent;
+            pointer-events: none;
+          }
+    }
+
+}

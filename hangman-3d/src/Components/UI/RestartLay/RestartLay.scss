@@ -1,0 +1,18 @@
+@import '../../../variables';
+.restart-container{
+    position: absolute;
+    bottom: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .restart{
+        width: fit-content;
+        align-self: center;
+        border-radius: $radius;
+        padding: $button-padding;
+        font-size: 1rem;
+        background-color: $light-red;
+        color: #fff;
+        }
+}
+

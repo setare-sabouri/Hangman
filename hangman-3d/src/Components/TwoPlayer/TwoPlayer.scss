@@ -1,0 +1,11 @@
+.Two-Player-ui {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    width: 100%;
+    text-align: center;
+}

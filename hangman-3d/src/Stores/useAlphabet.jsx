@@ -5,29 +5,30 @@ import { subscribeWithSelector } from 'zustand/middleware';
 const useAlphabet = create(
   subscribeWithSelector((set) => ({
     letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-    hasWon: false,
+    lives: 6,
     word: null,
     guessedLetters: [],
     wordMeaning: null,
+    hasWon: false,
+    resetSeed: Math.random(),
+
 
 
     setWord: (value) => {
-      set((state) => {
+      set(() => {
         return {
           word: value
         }
       })
     },
 
-
     setWordMeaning: (value) => {
-      set((state) => {
+      set(() => {
         return {
           wordMeaning: value
         }
       })
     },
-
 
     ResetLetters: () => set(() => ({ guessedLetters: [] })),
 
@@ -35,34 +36,35 @@ const useAlphabet = create(
       guessedLetters: [...state.letters]
     })),
 
-
-    checkIfWon: () => set((state) => {
-      const wordLetters = state.word?.split('') || [];
-      const hasWon = wordLetters.every(letter => state.guessedLetters.includes(letter));
-    
-      if (hasWon) {
-        return { hasWon: true };
-      }
-      return {};
-    }),
-    
     addGuess: (letter) =>
       set((state) => {
         const updatedGuesses = [...state.guessedLetters, letter];
         const wordLetters = state.word?.split('') || [];
         const hasWon = wordLetters.every((char) => updatedGuesses.includes(char));
-        console.log(updatedGuesses)
-        console.log(hasWon)
         return {
           guessedLetters: updatedGuesses,
           hasWon,
         };
       }),
+    displaylives: (value) => set(() => ({ lives: value })),
 
+
+
+    resetGame: () => {
+      set((state) => ({
+        guessedLetters: [],
+        resetSeed: Math.random(),
+        lives: 6,
+        hasWon:false
+      }));
+    }
+    
   })),
 
 
-  
+
+
+
 );
 
 export default useAlphabet;

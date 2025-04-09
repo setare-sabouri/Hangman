@@ -2,19 +2,16 @@ import React, { useEffect } from 'react'
 import './SinglePlayer.scss'
 import useScene from '../../Stores/useScene'
 import { getWord } from '../../API';
-import useGame from '../../Stores/useGame';
 import useAlphabet from '../../Stores/useAlphabet';
-import Hearts from '../Lives/Heart';
-import KeyPad from './keyPad';
-import WordDisplay from './WordDisplay';
-import RestartLay from '../RestartLay';
+import Hearts from '../Heart/Heart';
+import KeyPad from '../UI/KeyPad/KeyPad';
+import WordDisplay from '../UI/WordDisplay/WordDisplay';
+import RestartLay from '../UI/RestartLay/RestartLay'
 
 
 const SinglePlayer = () => {
-
   const { setScene } = useScene((state) => state);
-  const { wordMeaning,word,setWord,setWordMeaning,disableAllLetters,hasWon } = useAlphabet((state) => state);
-  const { lives,resetLives,displaylives } = useGame((state) => state);
+  const { wordMeaning,setWord,setWordMeaning,disableAllLetters,hasWon,resetSeed,lives } = useAlphabet((state) => state);
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -27,18 +24,14 @@ const SinglePlayer = () => {
       }
     };
     fetchWord();
-    console.log("this ssssss one")
 
-    const unSubscribeLose= useGame.subscribe(
+    const unsubscribeLose= useAlphabet.subscribe(
       (state)=>state.lives,
       (lives)=>{
-        console.log(lives)
           if(lives<=0){
-            console.log("oppppps lives are done now",lives)
+            console.log("oppps, You Lost ")
             disableAllLetters()
-          }
-          else return
-         
+          }         
       }
       )
 
@@ -47,35 +40,27 @@ const SinglePlayer = () => {
         (hasWon)=>{
             if(hasWon){
               console.log("🎉 YOU WON!");
-              displaylives(0)
               disableAllLetters();
-              console.log(lives)
             }
-            else return
-           
         }
         )
 
+        setScene(
+          <Hearts />
+        );
 
       return()=>{
-        unSubscribeLose()
+        unsubscribeLose()
         unSubscribeWon()
+        setScene(null);
       }
-  }, []);
+  }, [resetSeed]);
 
-  useEffect(() => {
-    if (word && wordMeaning) {
-      setScene(
-        <Hearts />
-      );
-      return () => setScene(null);
-    }
-  }, [word])
+ 
 
   return (
       <div className='single-player-ui'>
-        <h1>Hang Man</h1>
-        <p > Hint : {wordMeaning} </p>
+        <p> Hint : {wordMeaning} </p>
         <KeyPad />
         <WordDisplay/>
        {(lives<=0 || hasWon) &&  <RestartLay/>}

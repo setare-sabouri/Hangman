@@ -1,22 +1,17 @@
 import React from 'react';
-import useAlphabet from '../../Stores/useAlphabet';
-import useGame from '../../Stores/useGame'
+import useAlphabet from '../../../Stores/useAlphabet';
+import './Keypad.scss'
+
 const KeyPad = () => {
-  const { guessedLetters, addGuess, letters, word,disableAllLetters } = useAlphabet((state) => state)
-  const { lives, displaylives,resetLives } = useGame()
+  const { guessedLetters, addGuess, letters, word, displaylives, lives } = useAlphabet((state) => state)
 
 
   const CheckLetter = (letter) => {
-  
-console.log(word)
+    console.log(word)
     if (!word.includes(letter)) {
-      displaylives(lives-1);
-      console.log("not a part of it ")
+      displaylives(lives - 1);
     }
-
     addGuess(letter)
-
-    
   }
 
   return (
@@ -26,7 +21,6 @@ console.log(word)
           key={letter}
           className={`letter ${guessedLetters.includes(letter) ? 'disabled' : ''}`}
           onClick={() => CheckLetter(letter)}
-
         >
           {letter}
         </button>

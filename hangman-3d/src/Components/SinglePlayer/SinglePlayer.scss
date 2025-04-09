@@ -1,49 +1,18 @@
 .single-player-ui {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
-    width: 100%;
-    text-align: center;
+  display: flex;
+      flex-direction: column;
+      position: absolute;
+      z-index: 1;
+      height: 75%;
+      gap: 3rem;
+      top: 0rem;
+      justify-content: flex-end;
+      font-family: "Courier New", Courier, monospace;
+      color: white;
+      text-align: center;
+      align-items: center;
+      
+      p{
+        padding: 0 3rem;
+      }
 }
-
-.keypad {
-    padding: 10px 15px;
-    font-size: 1.2rem;
-    background-color: #fff;
-    border: 2px solid #444;
-    border-radius: 5px;
-
-    .letter {
-        padding: 0.5rem;
-
-        &:hover {
-            background-color: #eee;
-          }
-
-        &.disabled {
-            background-color: #ccc; 
-            color: #666;
-            pointer-events: none;
-          }
-    }
-
-}
-
-.word-display {
-    display: flex;
-    justify-content: center;
-    padding: 5rem 0 1rem 0; 
-  }
-  
-  .word-display .letter {
-    font-size: 2rem;
-    border-bottom: 2px solid #000;
-    padding: 0.2rem 0.5rem;
-    min-width: 1.5rem;
-    text-align: center;
-  }
-  
