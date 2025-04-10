@@ -50,10 +50,7 @@ const SinglePlayer = () => {
       }
     )
 
-    setScene(
-      <Hearts />
-    );
-    setIsMobile(isMobile);
+    setScene( <Hearts />);
 
     return () => {
       unsubscribeLose()
