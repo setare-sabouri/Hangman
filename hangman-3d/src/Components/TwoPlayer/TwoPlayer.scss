@@ -1,21 +1,19 @@
-.Two-Player-ui {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
-    width: 100%;
-    text-align: center;
-}
+@import '../../variables';
 
 .Two-Player-ui {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-  
+    position: absolute;
+    z-index: 1;
+    height: 75%;
+    top: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+
     .word-form {
       display: flex;
       flex-direction: column;
@@ -35,7 +33,7 @@
       }
   
       button {
-        background-color: #e74c3c;
+        background-color: $light-red;
         color: white;
         border: none;
         padding: 0.5rem 1rem;
@@ -45,7 +43,7 @@
         transition: background-color 0.2s ease;
   
         &:hover {
-          background-color: #c0392b;
+          background-color: $darke-red;
         }
       }
     }

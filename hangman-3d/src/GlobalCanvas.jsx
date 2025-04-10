@@ -14,14 +14,13 @@ const GlobalCanvas = () => {
     return (
         <Canvas
             camera={{
-                position: isMobile ? [0, 0, 10] : [0, -5, 20],
+                position: isMobile ? [0, 0, 10] : [0, 0, 8],
                 fov: isMobile ? 80 : 60,
 
             }}>
             <OrbitControls maxDistance={10} />
-            <color attach="background" args={['#555555']} />
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
+            <ambientLight intensity={2} />
+            <directionalLight position={[0, 0, 8]} intensity={5} lookAt={[0,0,0]} />
             {scene}
             {/* <axesHelper args={[5]} /> */}
         </Canvas>

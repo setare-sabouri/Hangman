@@ -41,6 +41,8 @@ const TwoPlayer = () => {
       (state) => state.resetSeed,
       () => {
        setSubmitted(false)
+       setWordInput('');  
+       setHintInput('');
       }
     )
 
@@ -59,7 +61,7 @@ const TwoPlayer = () => {
 
     if (wordInput.trim() !== '') {
       setWord(wordInput.toUpperCase());
-      setWordMeaning(hintInput || 'No hint :)'); // set empty string if no hint
+      setWordMeaning(hintInput || 'No hint :)'); 
       setSubmitted(true);
     }
   };

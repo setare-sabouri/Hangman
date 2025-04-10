@@ -3,7 +3,7 @@
 .keypad {
     width: 80%;
     padding: 2rem 3rem;
-    background-color: $transparent;
+    background-color: $dark-gray;
     border-radius: $radius;
     display: flex;
     flex-wrap: wrap;
@@ -17,12 +17,12 @@
         font-size: $fontSize;
 
         &:hover {
-            background-color: $light-red;
+            background-color: $light-white;
             color: $light-white;
           }
 
         &.disabled {
-            background-color: $darke-red; 
+            background-color: $light-red; 
             color: $transparent;
             pointer-events: none;
           }
