@@ -1,10 +1,12 @@
 import React from 'react';
 import useAlphabet from '../../../Stores/useAlphabet';
 import './Keypad.scss'
+import useGame from '../../../Stores/useGame';
+
 
 const KeyPad = () => {
   const { guessedLetters, addGuess, letters, word, displaylives, lives } = useAlphabet((state) => state)
-
+  const isMobile = useGame((state) => state.isMobile);
 
   const CheckLetter = (letter) => {
     console.log(word)
@@ -15,11 +17,11 @@ const KeyPad = () => {
   }
 
   return (
-    <div className='keypad'>
+    <div className={`keypad ${isMobile ? 'mobile' : ' '}`}>
       {letters.map((letter) => (
         <button
           key={letter}
-          className={`letter ${guessedLetters.includes(letter) ? 'disabled' : ''}`}
+          className={`${isMobile ? 'mobile' : ' '}  letter ${guessedLetters.includes(letter) ? 'disabled' : ''}`}
           onClick={() => CheckLetter(letter)}
         >
           {letter}

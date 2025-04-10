@@ -6,21 +6,16 @@ import useGame from "./Stores/useGame";
 import React from 'react'
 
 const GlobalCanvas = () => {
-    const isMobileQuery = useMediaQuery({ query: '(max-width: 768px)' });
-    const setIsMobile = useGame((state) => state.setIsMobile);
-  
-    React.useEffect(() => {
-      setIsMobile(isMobileQuery);
-    }
-    , [isMobileQuery]);
+
+    const isMobile = useGame((state) => state.isMobile)
 
     const { scene } = useScene((state) => state);
 
     return (
         <Canvas
             camera={{
-                position: isMobileQuery ? [0, 0, 10] : [0, -5, 20],
-                fov: isMobileQuery ? 80 : 60,
+                position: isMobile ? [0, 0, 10] : [0, -5, 20],
+                fov: isMobile ? 80 : 60,
 
             }}>
             <OrbitControls maxDistance={10} />

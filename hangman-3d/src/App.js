@@ -5,8 +5,20 @@ import SinglePlayer from './Components/SinglePlayer/SinglePlayer';
 import TwoPlayer from './Components/TwoPlayer/TwoPlayer'
 import './styles.scss';
 import GlobalCanvas from './GlobalCanvas';
+import { useMediaQuery } from 'react-responsive';
+import { useEffect } from 'react';
+import useGame from './Stores/useGame';
 
 function App() {
+
+  const isMobileQuery = useMediaQuery({ query: '(max-width: 768px)' })
+  const setIsMobile = useGame((state) => state.setIsMobile)
+
+  useEffect(() => {
+    setIsMobile(isMobileQuery)
+  }, [isMobileQuery, setIsMobile])
+
+
   return (
     <>
       <GlobalCanvas />

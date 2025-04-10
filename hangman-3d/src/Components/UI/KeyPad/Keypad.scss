@@ -26,6 +26,16 @@
             color: $transparent;
             pointer-events: none;
           }
+
+          &.mobile{
+            padding: 0.5rem;
+
+          }
     }
 
+
+    &.mobile{
+      padding: 2rem 1rem;
+    }
 }
+
