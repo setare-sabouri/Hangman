@@ -13,7 +13,7 @@ const GlobalCanvas = () => {
                 position: isMobile ? [0, 0, 10] : [0, 0, 8],
                 fov: isMobile ? 80 : 60,
             }}>
-            <color args={["#E76F51"]} attach={"background"} />
+            <color args={["#695342"]} attach={"background"} />
             <directionalLight position={[0, 0, 8]} intensity={4} lookAt={[0, 0, 0]} />
             <ambientLight intensity={1} />
 
