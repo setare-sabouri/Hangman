@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import styles from './BackAudio.module.scss'
 
-const BackAudio = ({ src = './sound/furelisebox.mp3'}) => {
+const BackAudio = ({ src = '/sound/furelisebox.mp3'}) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 

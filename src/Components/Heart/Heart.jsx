@@ -4,10 +4,11 @@ import * as THREE from 'three'
 import useGame from '../../Stores/useGame'
 import useAlphabet from '../../Stores/useAlphabet'
 const Hearts = () => {
+  const { nodes,materials} = useGLTF('/models/heart.glb')
+  const heartMesh = nodes.Cartoon_Heart_Icon
+  const material = materials.Red
 
-  const { nodes, materials } = useGLTF('/realistic_human_heart.glb')
-  const heartMesh = nodes.hartZBrush_defualt_group_Heart_Tex_0
-  const material = materials.Heart_Tex
+
   const { lives } = useAlphabet((state) => state)
   const { isMobile } = useGame((state) => state)
   
@@ -28,12 +29,10 @@ const Hearts = () => {
 
   return (
     <instancedMesh
-      castShadow
-      receiveShadow
-      position={isMobile ? [-2, -3, 0] : [-2.5, 0, 0]}
+      position={isMobile ? [-3, -1, 0] : [-5, 2, 0]}
+      scale={isMobile? 0.4: 0.6}
       ref={instancedMeshRef}
       args={[heartMesh.geometry, material, lives]}
-      scale={0.3}
     />
   )
 }

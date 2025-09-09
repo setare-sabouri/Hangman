@@ -3,7 +3,7 @@ import useGame from '../../Stores/useGame'
 import TextGeo from './TextGeo'
 
 const HangedMan = () => {
-  const HangedMan = useGLTF('/hangman.glb')
+  const HangedMan = useGLTF('/models/hangman.glb')
     const { isMobile} = useGame((state) => state)
   
   return (
