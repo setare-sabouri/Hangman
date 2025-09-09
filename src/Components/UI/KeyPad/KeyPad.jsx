@@ -9,7 +9,7 @@ const KeyPad = () => {
   const isMobile = useGame((state) => state.isMobile);
 
   const CheckLetter = (letter) => {
-    console.log(word)
+    if (!word) return;
     if (!word.includes(letter)) {
       displaylives(lives - 1);
     }

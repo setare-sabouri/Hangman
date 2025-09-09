@@ -12,11 +12,7 @@ import useGame from '../../Stores/useGame';
 const SinglePlayer = () => {
   const { setScene } = useScene((state) => state);
   const { wordMeaning, setWord, setWordMeaning, disableAllLetters, hasWon, resetSeed, lives } = useAlphabet((state) => state);
-  const { isMobile, setIsMobile } = useGame((state) => state)
-
-
-  console.log(isMobile)
-
+  const { isMobile } = useGame((state) => state)
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -50,7 +46,7 @@ const SinglePlayer = () => {
       }
     )
 
-    setScene( <Hearts />);
+    setScene(<Hearts />);
 
     return () => {
       unsubscribeLose()
@@ -58,7 +54,6 @@ const SinglePlayer = () => {
       setScene(null);
     }
   }, [resetSeed]);
-
 
 
   return (

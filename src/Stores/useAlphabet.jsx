@@ -6,9 +6,9 @@ const useAlphabet = create(
   subscribeWithSelector((set) => ({
     letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
     lives: 6,
-    word: null,
+    word: "",
     guessedLetters: [],
-    wordMeaning: null,
+    wordMeaning: "",
     hasWon: false,
     resetSeed: Math.random(),
 

@@ -1,0 +1,13 @@
+.backAudio {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 100;
+  cursor: pointer;
+  color: white;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
+}

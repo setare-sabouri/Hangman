@@ -8,6 +8,7 @@ import GlobalCanvas from './GlobalCanvas';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect } from 'react';
 import useGame from './Stores/useGame';
+import BackAudio from './Components/UI/BackAudio/BackAudio';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <>
+      <BackAudio/>
       <GlobalCanvas />
       <BrowserRouter>
         <Routes>
