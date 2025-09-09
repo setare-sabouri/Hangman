@@ -1,36 +1,20 @@
-import { Center, useGLTF, Text, Text3D } from '@react-three/drei'
+import { useGLTF} from '@react-three/drei'
+import useGame from '../../Stores/useGame'
+import TextGeo from './TextGeo'
 
 const HangedMan = () => {
   const HangedMan = useGLTF('/hangman.glb')
+    const { isMobile} = useGame((state) => state)
+  
   return (
-    <Center>
-        <primitive position={[0,-0.5,0]} object={HangedMan.scene} scale={0.9} />
-        <Text
-          font="./bebas-neue-v9-latin-regular.woff"
-          fontSize={2}
-          color="white"
-          position={[-6, 5, 0]}
-          anchorX="center"
-          anchorY="middle"
+    <>
+        <primitive position={isMobile?[-1.3,-6,0]:[-3.4,-4.3,-1]} object={HangedMan.scene} scale={isMobile?0.8:1} />
 
-          onClick={() => window.location.href = '/game/onePlayer'}
-        >
-          Single Player
-        </Text>
-        <Text
-          font="./bebas-neue-v9-latin-regular.woff"
-          fontSize={2}
-          color="white"
-          position={[-6, 2, 0]}
-          anchorX="center"
-          anchorY="middle"
+        <TextGeo text='Single Player' size={isMobile?1:1.1} position={isMobile?[-4,4,0]:[0,0.5,-1]}onClick={() => {window.location.href = '/game/onePlayer';}}/>
+        <TextGeo text='Two Players' size={isMobile?1:1.1} position={isMobile?[-4,2,0]:[0,-2,-1]} onClick={() => window.location.href = '/game/twoPlayer'}/>
 
-          onClick={() => window.location.href = '/game/twoPlayer'}
-        >
-          Two Player
-        </Text>
 
-    </Center>
+    </>
   )
 }
 

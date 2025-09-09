@@ -2,6 +2,7 @@ import { Canvas } from "react-three-fiber";
 import useScene from "./Stores/useScene";
 import { PresentationControls } from "@react-three/drei";
 import useGame from "./Stores/useGame";
+import { Perf } from "r3f-perf";
 
 const GlobalCanvas = () => {
     const isMobile = useGame((state) => state.isMobile)
@@ -13,11 +14,12 @@ const GlobalCanvas = () => {
                 position: isMobile ? [0, 0, 10] : [0, 0, 8],
                 fov: isMobile ? 80 : 60,
             }}>
+            {/* <Perf/> */}
             <color args={["#695342"]} attach={"background"} />
             <directionalLight position={[0, 0, 8]} intensity={4} lookAt={[0, 0, 0]} />
             <ambientLight intensity={1} />
 
-            <PresentationControls global polar={[-0.3, 0.5]} azimuth={[-1.5, 0.75]} damping={0.3} snap position={[0, 2, 0]}>
+            <PresentationControls global polar={[-0.3, 0.5]} azimuth={[-1.5, 0.75]} damping={0.3} snap position={[0, 2, 0]} cursor={false}>
                 {scene}
             </PresentationControls>
 
